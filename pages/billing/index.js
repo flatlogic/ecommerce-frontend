@@ -18,6 +18,7 @@ import { toast, ToastContainer } from "react-toastify";
 import countryList from 'react-select-country-list'
 import MaskInput from "react-maskinput";
 import scriptLoader from 'react-async-script-loader';
+import config from "constants/config";
 
 import {
   CardElement,
@@ -53,7 +54,7 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
 
   const processPayment = async () => {
     const session = await axios.post(
-        'https://flatlogic-ecommerce-backend.herokuapp.com/payment/session-initiate',
+        `${config.apiBaseUrl}/payment/session-initiate`,
         {
           customerEmail: 'example@gmail.com',
           clientReferenceId:
@@ -61,13 +62,13 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
           lineItem: {
             name: 'My Name',
             description: 'My Description',
-            images: ['https://flatlogic-ecommerce-backend.herokuapp.com/images/products/1.png'],
+            images: [`${config.apiBaseUrl}/images/products/1.png`],
             amount: 100,
             currency: 'eur',
             quantity: 1,
           },
-          successUrl: 'https://flatlogic-ecommerce.herokuapp.com/',
-          cancelUrl: 'https://flatlogic-ecommerce.herokuapp.com/error',
+          successUrl: `${config.appBaseUrl}/`,
+          cancelUrl: `${config.appBaseUrl}/error`,
         }
     );
 

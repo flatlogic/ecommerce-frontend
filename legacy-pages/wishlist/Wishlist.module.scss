@@ -1,0 +1,59 @@
+@use "styles/app" as *;
+
+.addToCartBtn {
+  font-weight: bold;
+  height: 50px;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  .addToCart {
+    background: url("../../public/images/e-commerce/shopping-cart.svg");
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+    background-repeat: no-repeat;
+  }
+  &:hover {
+    .addToCart {
+      background: url("../../public/images/e-commerce/shopping-cart-hover.svg");
+      background-repeat: no-repeat;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.tableColumn {
+  position: relative;
+}
+
+.productImage {
+  margin-right: 1.5rem;
+}
+
+.mutedText {
+  color: $text-muted;
+}
+
+.wishListTable {
+  min-width: 600px;
+  color: #29323a;
+
+  thead th {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+}
+
+.pageTitle {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.emptyRow,
+.emptyCell {
+  display: contents;
+}
+
+.emptyMessage {
+  color: #29323a;
+}

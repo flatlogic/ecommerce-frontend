@@ -1,0 +1,48 @@
+@use "styles/app" as *;
+
+.contactContainer {
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+.pageTitle {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.mutedText,
+.formLabel {
+  color: $text-muted;
+}
+
+.formLabel {
+  margin-bottom: 0.5rem;
+}
+
+.formControl {
+  color: #495057;
+}
+
+.emailField {
+  margin-right: 3rem;
+}
+
+.submitButton,
+.submitButton:hover,
+.submitButton:focus,
+.submitButton:active {
+  color: #fff;
+}
+
+.contactVisual {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  object-fit: cover;
+  img {
+    flex: 1 1 auto;
+    object-fit: cover;
+    max-width: 100%;
+  }
+}

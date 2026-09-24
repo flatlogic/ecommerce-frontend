@@ -1,6 +1,6 @@
 {
   "name": "Header",
   "version": "1.0.0",
-  "main": "Header.js",
+  "main": "Header.tsx",
   "license": "MIT"
 }

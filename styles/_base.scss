@@ -32,7 +32,7 @@
 .form-action {
   background-color: #f5f5f5;
   margin: $spacer 0 0;
-  padding: calc(#{$spacer}/2) $spacer;
+  padding: calc(#{$spacer}/ 2) $spacer;
 }
 
 .widget-top-overflow,
@@ -294,8 +294,8 @@ input.search {
 }
 
 input.info {
-  background: url("../public/images/e-commerce/question-mark-circle.svg") no-repeat
-    right;
+  background: url("../public/images/e-commerce/question-mark-circle.svg")
+    no-repeat right;
   -webkit-appearance: none;
   background-position: calc(100% - 15px);
   background-color: $white;

@@ -1,0 +1,119 @@
+@use "styles/app" as *;
+
+.blogPage {
+  h3 {
+    font-size: 24.5px;
+    line-height: 29.4px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  hr {
+    box-sizing: content-box;
+    color: gray;
+    height: 0;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  :global(.form-control) {
+    color: #495057;
+  }
+
+  :global(.text-muted) {
+    color: $text-muted !important;
+  }
+}
+
+.categoryLink {
+  margin-bottom: 0;
+  & > a {
+    color: $text-color;
+  }
+}
+
+.categroryWrapper {
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    a,
+    p {
+      color: var(--primary-color);
+    }
+  }
+}
+.categoryAmount {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.blogPostImgWrap {
+  height: 500px;
+  display: inline-block;
+  & > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.post_date {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height, or 150% */
+
+  /* Basic 500 */
+
+  color: #9d9d9d;
+}
+
+.post_title {
+  & > h4 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 36px;
+    /* identical to box height, or 180% */
+
+    /* Basic 900 */
+
+    color: #262626;
+  }
+}
+
+.author_name {
+  margin-top: 32px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $primary-color;
+  display: inline-block;
+}
+
+.post_epigraph {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+
+  /* Basic 900 */
+
+  color: #262626;
+
+  mix-blend-mode: normal;
+}
+
+.blogPost {
+  margin-bottom: 60px;
+}

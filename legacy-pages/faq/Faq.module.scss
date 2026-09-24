@@ -1,0 +1,49 @@
+@use "styles/app" as *;
+
+.faqContainer {
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+.btn {
+  &:hover,
+  &:focus {
+    color: theme-color("primary") !important;
+  }
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.pageSubtitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.categoryTitle {
+  letter-spacing: 0.2em;
+}
+
+.faqTitle {
+  font-size: 1.5rem;
+  line-height: 36px;
+}
+
+.contentColumn {
+  position: relative;
+}
+
+.mutedText {
+  color: $text-muted;
+}
+
+.divider {
+  border-top-color: #d9d9d9;
+  opacity: 1;
+}

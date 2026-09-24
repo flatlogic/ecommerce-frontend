@@ -1,11 +1,13 @@
-@import "styles/app";
+@use "styles/app" as *;
 
 .root {
   z-index: 100;
   background: var(--navbar-bg);
   box-shadow: var(--navbar-shadow);
   height: $navbar-height;
-  transition: background-color 0.2s ease, margin 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    margin 0.2s ease;
 
   &.navbarFloatingType {
     margin: $spacer $content-padding 0;

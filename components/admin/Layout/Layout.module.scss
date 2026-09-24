@@ -1,4 +1,4 @@
-@import "../../../styles/app";
+@use "../../../styles/app" as *;
 
 .root {
   height: 100%;
@@ -15,7 +15,8 @@
   flex-direction: column;
   left: $sidebar-width-open - $sidebar-width-closed;
   right: 0;
-  transition: left $sidebar-transition-time ease-in-out,
+  transition:
+    left $sidebar-transition-time ease-in-out,
     margin-left $sidebar-transition-time ease-in-out;
 
   @media (max-width: breakpoint-max(sm)) {

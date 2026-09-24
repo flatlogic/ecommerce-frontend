@@ -1,0 +1,42 @@
+@use "styles/app" as *;
+
+.logoIcon {
+  position: relative;
+  top: 1.5px;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin: 0 20px;
+  vertical-align: baseline;
+}
+
+.title {
+  margin: 0;
+  color: #444;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.input {
+  color: #495057 !important;
+  background-color: #f2f2f2 !important;
+}
+
+.submitButton {
+  color: $white !important;
+}
+
+.accountLink {
+  color: theme-color("primary");
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: theme-color("primary");
+    text-decoration: none;
+  }
+}

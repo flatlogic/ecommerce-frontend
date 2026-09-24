@@ -1,0 +1,17 @@
+.root {
+  :global(.img-card:hover .img-buttons) {
+    display: block;
+  }
+  :global(.img-buttons) {
+    display: none;
+    position: relative;
+    top: -100px;
+    bottom: 2.4rem;
+    width: 100px;
+    text-align: center;
+    background-color: rgb(0 0 0 / 50%);
+  }
+  :global(.img-buttons *) {
+    color: white;
+  }
+}

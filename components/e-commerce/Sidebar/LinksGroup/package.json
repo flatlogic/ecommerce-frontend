@@ -1,6 +1,6 @@
 {
   "name": "LinksGroup",
   "version": "1.0.0",
-  "main": "LinksGroup.js",
+  "main": "LinksGroup.tsx",
   "license": "MIT"
 }

@@ -1,0 +1,19 @@
+@use "styles/app" as *;
+
+.error {
+  background: url("../../public/images/e-commerce/404/404.png") no-repeat center;
+  width: 100%;
+  height: 536px;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.eyebrow {
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 1.2;
+}

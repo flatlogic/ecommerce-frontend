@@ -1,4 +1,4 @@
-@import "../../../styles/app";
+@use "../../../styles/app" as *;
 
 .colorsList {
   display: flex;

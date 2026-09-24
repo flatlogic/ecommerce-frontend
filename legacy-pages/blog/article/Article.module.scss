@@ -1,0 +1,87 @@
+@use "styles/app" as *;
+
+.number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid theme-color("primary");
+  border-radius: 50%;
+  color: theme-color("primary");
+  align-self: flex-start;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  font-weight: bold;
+  margin-right: 18px;
+}
+
+.blogImage {
+  max-height: 650px;
+}
+
+.heroImage {
+  width: 100%;
+  margin-top: 32px;
+  max-height: 440px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.title {
+  font-size: 40px;
+  line-height: 60px;
+}
+
+.author_name {
+  letter-spacing: 0.15em;
+}
+
+.authorAvatar {
+  margin-right: 14px;
+}
+
+.epigraph {
+  line-height: 36px;
+  font-size: 20px;
+}
+
+.paragraph {
+  font-size: 16px;
+  line-height: 24px;
+  color: #555555;
+}
+
+.bulletPoints {
+  color: #555555;
+  line-height: 24px;
+}
+
+.articleContent,
+.moreFromBlog {
+  :global(.text-muted) {
+    color: $text-muted !important;
+  }
+}
+
+.articleContent hr {
+  box-sizing: content-box;
+  color: gray;
+  height: 0;
+  opacity: 1;
+  overflow: visible;
+}
+
+.moreFromBlog {
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+.moreTitle {
+  font-size: 1.75rem;
+  line-height: 1.2;
+}

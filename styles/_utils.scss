@@ -95,7 +95,7 @@ $z-index-variants: (
 }
 
 .circle-o {
-  border: #calc(#{$line-height-base} / 5)em solid transparent;
+  border: #calc(#{$line-height-base} / 5) em solid transparent;
 
   // stylelint-disable
   &.circle-o-danger {
@@ -559,8 +559,8 @@ $padding-vertical-variants: (
   xlg: 40px,
   lg: $spacer * 1.5,
   md: $spacer,
-  sm: math.div($spacer,2),
-  xs: math.div($spacer,4),
+  sm: math.div($spacer, 2),
+  xs: math.div($spacer, 4),
   0: 0,
 );
 $padding-horizontal-variants: (
@@ -622,7 +622,8 @@ $padding-horizontal-variants: (
 }
 
 /* .h* + .fw-bold */
-$font-sizes: 54px, $h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size,
+$font-sizes:
+  54px, $h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size,
   $h5-font-size, $h6-font-size;
 $i: 0;
 
@@ -663,7 +664,9 @@ $i: 0;
 
 .fade-enter.fade-enter-active {
   opacity: 1;
-  transition: opacity 200ms ease-in, -webkit-transform 200ms ease-in,
+  transition:
+    opacity 200ms ease-in,
+    -webkit-transform 200ms ease-in,
     transform 200ms ease-in;
   -webkit-transform: translate3d(0, 0, 0) scale(1);
   transform: translate3d(0, 0, 0) scale(1);

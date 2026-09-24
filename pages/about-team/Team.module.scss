@@ -1,9 +1,0 @@
-.img {
-    width: 100%;
-    max-height: 270px;
-    @media (max-width: 576px) {
-        width: unset;
-        display: block;
-        margin: 0 auto;
-    }
-}

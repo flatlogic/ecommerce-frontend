@@ -1,4 +1,5 @@
 import React from "react";
+import { ProductPhoto } from "components/e-commerce/ProductPhoto";
 import {
   Container,
   Row,
@@ -211,7 +212,7 @@ const Cart = () => {
                       <tr className={"mt-2"} key={`${item.id}-${index}`}>
                         <td className={"px-0 pt-4"}>
                           <div className={"d-flex align-items-center"}>
-                            <img
+                            <ProductPhoto
                               src={item.image[0]?.publicUrl}
                               width={100}
                               className={s1.productImage}

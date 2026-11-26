@@ -4,6 +4,7 @@ import InnerImageZoom from "react-inner-image-zoom";
 
 interface LegacyImageProps {
   src: string;
+  onError?: (() => void) | undefined;
   srcSet?: string;
   sizes?: string;
   alt?: string;
@@ -28,6 +29,7 @@ export default function ImageMagnify({
       zoomSrc={largeImage.src}
       imgAttributes={{
         alt: smallImage.alt ?? "",
+        onError: smallImage.onError,
         sizes: smallImage.sizes,
         srcSet: smallImage.srcSet,
       }}

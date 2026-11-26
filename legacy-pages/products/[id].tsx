@@ -16,10 +16,6 @@ import FormValidations from "components/admin/FormItems/formValidations";
 import ImagesFormItem from "components/admin/FormItems/items/ImagesFormItem";
 import { ToastContainer, toast } from "react-toastify";
 import Link from "components/compat/Link";
-import productFallback from "public/images/e-commerce/home/product5.png";
-import productRight from "public/images/e-commerce/details/1-right.png";
-import productCenter from "public/images/e-commerce/details/1-center.png";
-import productLeft from "public/images/e-commerce/details/1-left.png";
 import person2 from "public/images/e-commerce/details/person2.jpg";
 import product1 from "public/images/e-commerce/home/product1.png";
 import product2 from "public/images/e-commerce/home/product2.png";
@@ -40,7 +36,8 @@ import Head from "components/compat/Head";
 import feedbackActions from "@/redux/actions/feedback/feedbackListActions";
 import feedbackActionsForm from "@/redux/actions/feedback/feedbackFormActions";
 import productsListActions from "@/redux/actions/products/productsListActions";
-import ReactImageMagnify from "components/compat/ImageMagnify";
+import { ZoomableProductPhoto } from "components/e-commerce/ZoomableProductPhoto";
+import { ProductPhoto } from "components/e-commerce/ProductPhoto";
 import {
   CarouselProvider,
   Slider,
@@ -134,7 +131,6 @@ const Id = ({
   const [product, setProduct] = React.useState<Product>(serverSideProduct);
   const [quantity, setQuantity] = React.useState(1);
   const [fetching, setFetching] = React.useState(true);
-  const primaryImage = product.image[0]?.publicUrl ?? productFallback;
   const categoryTitle = product.categories[0]?.title ?? "";
 
   React.useEffect(() => {
@@ -276,34 +272,28 @@ const Id = ({
               lg={product.image.length > 1 ? 7 : 6}
               className={"d-flex"}
             >
-              <ReactImageMagnify
-                {...{
-                  smallImage: {
-                    alt: "Wristwatch by Ted Baker London",
-                    isFluidWidth: true,
-                    src: primaryImage,
-                  },
-                  largeImage: {
-                    src: primaryImage,
-                    width: 1200,
-                    height: 1200,
-                  },
-                }}
+              <ZoomableProductPhoto
+                src={product.image[0]?.publicUrl}
+                alt={product.title}
                 className={
                   product.image.length
                     ? `${s.productImage} ${s.productImageWithMargin}`
                     : s.productImage
                 }
-                enlargedImagePosition={"over"}
               />
               {product.image.length > 1 ? (
                 <div
                   className={`d-flex flex-column h-100 justify-content-between ${s.dMdNone}`}
                   style={{ width: 160 }}
                 >
-                  <img src={productRight} width={160} alt="productRight" />
-                  <img src={productCenter} width={160} alt="productCenter" />
-                  <img src={productLeft} width={160} alt="productLeft" />
+                  {product.image.slice(1).map((image) => (
+                    <ProductPhoto
+                      key={image.id ?? image.publicUrl}
+                      src={image.publicUrl}
+                      width={160}
+                      alt={product.title}
+                    />
+                  ))}
                 </div>
               ) : null}
             </Col>

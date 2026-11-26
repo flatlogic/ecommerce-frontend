@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3] - 26/11/2026
+
+### Fixed
+
+- Show a placeholder when a product photo is missing or fails to load in the storefront.
+- Disable image zoom on product pages when the original photo is unavailable.
+
 ## [2.0.2] - 26/11/2026
 
 ### Fixed

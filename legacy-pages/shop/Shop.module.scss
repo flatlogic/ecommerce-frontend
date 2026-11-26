@@ -163,9 +163,8 @@
   width: 100%;
   height: 264px;
   max-height: 264px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+  display: block;
+  object-fit: contain;
   &:hover {
     transform: scale(1.03) translate(-0px, -0px);
   }

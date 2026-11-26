@@ -26,7 +26,7 @@ vi.mock("react-inner-image-zoom", () => ({
     innerZoomSpy(props);
     return (
       <div data-testid="image-zoom">
-        <img {...props.imgAttributes} src={props.src} />
+        <img {...props.imgAttributes} src={props.src} alt={props.imgAttributes.alt} />
       </div>
     );
   },

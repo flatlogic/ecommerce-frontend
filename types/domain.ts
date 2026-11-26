@@ -13,6 +13,12 @@ export const categorySchema = z.object({
   metadata: z.record(z.string(), z.unknown()).optional(),
 });
 
+const optionalSeoText = z
+  .string()
+  .nullable()
+  .transform((value) => value ?? undefined)
+  .optional();
+
 export const productSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -23,15 +29,15 @@ export const productSchema = z.object({
   categories: z.array(categorySchema).default([]),
   rating: z.coerce.number().optional(),
   status: z.enum(["in stock", "out of stock"]).or(z.string()).optional(),
-  meta_description: z.string().optional(),
-  keywords: z.string().optional(),
-  meta_author: z.string().optional(),
-  meta_og_title: z.string().optional(),
-  meta_og_url: z.string().optional(),
-  meta_og_image: z.string().optional(),
-  meta_fb_id: z.string().optional(),
-  meta_og_sitename: z.string().optional(),
-  post_twitter: z.string().optional(),
+  meta_description: optionalSeoText,
+  keywords: optionalSeoText,
+  meta_author: optionalSeoText,
+  meta_og_title: optionalSeoText,
+  meta_og_url: optionalSeoText,
+  meta_og_image: optionalSeoText,
+  meta_fb_id: optionalSeoText,
+  meta_og_sitename: optionalSeoText,
+  post_twitter: optionalSeoText,
   metadata: z.record(z.string(), z.unknown()).optional(),
 });
 

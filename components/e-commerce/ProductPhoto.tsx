@@ -20,8 +20,9 @@ export function useProductPhoto(src: string | undefined, alt: string) {
 
 type ProductPhotoProps = Pick<
   ImgHTMLAttributes<HTMLImageElement>,
-  "src" | "width" | "height" | "className"
+  "width" | "height" | "className"
 > & {
+  src?: string | undefined;
   alt: string;
 };
 

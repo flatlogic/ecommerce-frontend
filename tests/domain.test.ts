@@ -21,6 +21,23 @@ describe("domain schemas", () => {
     });
   });
 
+  it("accepts null SEO text in a catalog page and preserves populated fields", () => {
+    const row = {
+      id: "product-1",
+      title: "Chair",
+      price: "79.50",
+      meta_description: null,
+      keywords: "furniture",
+    };
+    const schema = pageResultSchema(productSchema);
+    const { rows } = schema.parse({ rows: [row], count: 1 });
+
+    expect(rows[0]?.meta_description).toBeUndefined();
+    expect(rows[0]?.keywords).toBe("furniture");
+    expect(rows[0]?.price).toBe(79.5);
+    expect(schema.safeParse({ rows: [{ ...row, keywords: 123 }] }).success).toBe(false);
+  });
+
   it("validates paginated backend responses", () => {
     const result = pageResultSchema(productSchema).parse({
       count: 1,

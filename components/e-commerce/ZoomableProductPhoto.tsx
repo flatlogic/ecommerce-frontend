@@ -13,7 +13,7 @@ export function ZoomableProductPhoto({ src, alt, className }: Props) {
   const { unavailable, imageProps } = useProductPhoto(src, alt);
 
   if (unavailable) {
-    return <img className={className} {...imageProps} />;
+    return <img className={className} {...imageProps} alt={imageProps.alt} />;
   }
   return (
     <ImageMagnify

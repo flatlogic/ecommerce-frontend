@@ -28,5 +28,5 @@ type ProductPhotoProps = Pick<
 
 export function ProductPhoto({ src, alt, ...props }: ProductPhotoProps) {
   const { imageProps } = useProductPhoto(src, alt);
-  return <img {...props} {...imageProps} />;
+  return <img {...props} {...imageProps} alt={imageProps.alt} />;
 }

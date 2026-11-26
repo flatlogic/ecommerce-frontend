@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Documentation
+
+- Added a desktop and mobile preview of the live shop and a README guide to the files that control its layout and styling.
+
 ## [2.0.5] - 26/11/2026
 
 ### Documentation

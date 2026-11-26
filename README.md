@@ -1,18 +1,30 @@
-# Flatlogic Ecommerce React
+<h1 align="center">Flatlogic Ecommerce React</h1>
 
-A free storefront and admin dashboard for a furniture shop, built with Next.js 16, React 19, TypeScript and Bootstrap 5. Shoppers can browse products, save favorites and add items to their cart. The admin dashboard manages the catalog, orders and blog.
+<p align="center">A furniture storefront and admin dashboard you can run with your own catalog.<br>Built with Next.js 16, React 19, TypeScript and Bootstrap 5.</p>
 
-[Browse the live shop](https://flatlogic-ecommerce.flatlogic.com/shop) · [Demo sign-in](https://flatlogic-ecommerce.flatlogic.com/login) · [Backend setup](https://github.com/flatlogic/ecommerce-backend#-quick-start) · [Latest release](https://github.com/flatlogic/ecommerce-frontend/releases/latest) · [Changelog](changelog.md)
+<p align="center">
+  <a href="https://flatlogic-ecommerce.flatlogic.com/shop"><strong>Explore the live shop</strong></a>
+  &nbsp;·&nbsp; <a href="#quick-start">Quick start</a>
+  &nbsp;·&nbsp; <a href="https://github.com/flatlogic/ecommerce-backend">Backend</a>
+  &nbsp;·&nbsp; <a href="changelog.md">Changelog</a>
+</p>
 
-[![Flatlogic storefront with the home collection and new arrivals](public/images/screenshot.png)](https://flatlogic-ecommerce.flatlogic.com/)
+<a href="https://flatlogic-ecommerce.flatlogic.com/">
+  <picture>
+    <source media="(max-width: 600px)" srcset="docs/images/storefront-mobile.webp">
+    <img src="docs/images/storefront-preview.webp" alt="Flatlogic furniture shop homepage featuring a linen sofa and a vase of dried flowers">
+  </picture>
+</a>
 
-You can browse the shop as a guest. To open the [admin dashboard](https://flatlogic-ecommerce.flatlogic.com/admin/dashboard), sign in first. The demo catalog is shared, so changes can appear to other visitors.
+**Try the storefront.** Browse the [furniture catalog](https://flatlogic-ecommerce.flatlogic.com/shop), open a product to zoom in on its photos, save a favorite or add it to the cart.
 
-## Run locally
+**Try the back office.** [Sign in](https://flatlogic-ecommerce.flatlogic.com/login), then open the [admin dashboard](https://flatlogic-ecommerce.flatlogic.com/admin/dashboard) to manage products, orders and blog posts. The public demo restores its sample data at the start of every hour.
 
-Start the [companion Node.js API](https://github.com/flatlogic/ecommerce-backend) with its PostgreSQL database and sample data. The frontend expects the API at `http://localhost:8080/api`.
+## Quick start
 
-With [nvm](https://github.com/nvm-sh/nvm) installed, run the following in a separate terminal. The repository pins Node in [`.nvmrc`](.nvmrc) and npm in [`package.json`](package.json).
+First, start the [companion backend and seed its PostgreSQL database](https://github.com/flatlogic/ecommerce-backend#-quick-start). Its local API runs at `http://localhost:8080/api`.
+
+In a second terminal, use [nvm](https://github.com/nvm-sh/nvm) to select the repository’s Node version and start the storefront.
 
 ```sh
 git clone https://github.com/flatlogic/ecommerce-frontend.git
@@ -23,32 +35,49 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open [the local shop](http://localhost:3000/shop). If the catalog is empty, check that the backend is running, has sample products and is reachable at the API URL in `.env.local`.
+Open [localhost:3000/shop](http://localhost:3000/shop) to see your local catalog. If it is empty, check that the API is running at the address in `.env.local` and has sample products.
 
-## Configuration
+## Customize the storefront
 
-The defaults in [`.env.example`](.env.example) work for a frontend and API running on the same computer. For another deployment, set these values before building.
-
-| Variable | Used for |
+| To change | Start here |
 | --- | --- |
-| `API_BASE_URL` | API URL reachable from the Next.js server, including `/api`. |
-| `NEXT_PUBLIC_API_BASE_URL` | API URL reachable from the shopper’s browser, including `/api`. |
-| `NEXT_PUBLIC_APP_URL` | Public storefront URL used for checkout return links. |
+| Product filters and the catalog grid | [Shop screen](legacy-pages/shop/index.tsx) and [shop styles](legacy-pages/shop/Shop.module.scss) |
+| Navigation and footer links | [Header](components/e-commerce/Header/Header.tsx) and [Footer](components/e-commerce/Footer/Footer.tsx) |
+| Store colors, typography and spacing | [Sass variables](styles/_variables.scss) |
+| Product detail layout | [Product page](legacy-pages/products/%5Bid%5D.tsx) |
 
-The billing page demonstrates Stripe Checkout with a sample line item. To take payments for a real cart, configure Stripe on the backend and calculate the order total there.
+## Configuration and checks
 
-## Build and test
+<details>
+<summary><strong>API addresses and checkout</strong></summary>
+
+The defaults in [`.env.example`](.env.example) connect the frontend to a local API. Set the deployment values before building.
+
+| Variable | Purpose |
+| --- | --- |
+| `API_BASE_URL` | API address reachable from the Next.js server, including `/api`. |
+| `NEXT_PUBLIC_API_BASE_URL` | API address reachable from the shopper’s browser, including `/api`. |
+| `NEXT_PUBLIC_APP_URL` | Storefront address used for checkout return links. |
+
+The billing page demonstrates Stripe Checkout with one sample line item. For real orders, configure Stripe on the backend and calculate the total there from the shopper’s cart.
+
+</details>
+
+<details>
+<summary><strong>Production build and tests</strong></summary>
 
 | Command | What it does |
 | --- | --- |
 | `npm run build` | Build the production frontend. |
 | `npm start` | Serve the production build. |
 | `npm run verify` | Type-check, lint, run unit tests with coverage and build. |
-| `npm run test:e2e` | Run desktop and mobile Playwright tests. |
-| `npm run test:visual` | Compare storefront screenshots with the saved baselines. |
+| `npm run test:e2e` | Run desktop and mobile browser tests. |
+| `npm run test:visual` | Compare screenshots against the saved visual baselines. |
 
-Before the first browser test, run `npx playwright install chromium webkit`. The visual baselines in this repository were captured on macOS.
+Install the test browsers once with `npx playwright install chromium webkit`. The visual baselines were captured on macOS. Pinned tool versions are in [`.nvmrc`](.nvmrc) and [`package.json`](package.json).
+
+</details>
 
 ## License and support
 
-Released under the [MIT License](LICENSE). [Report a bug](https://github.com/flatlogic/ecommerce-frontend/issues) or ask a question on the [Flatlogic forum](https://flatlogic.com/forum).
+[MIT license](LICENSE) · [Latest release](https://github.com/flatlogic/ecommerce-frontend/releases/latest) · [Report a bug](https://github.com/flatlogic/ecommerce-frontend/issues) · [Flatlogic forum](https://flatlogic.com/forum)

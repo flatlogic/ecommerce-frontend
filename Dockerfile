@@ -9,8 +9,10 @@ ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL} \
     NEXT_TELEMETRY_DISABLED=1
 
 FROM base AS build
+RUN npm install --prefix /opt/build-tools --no-audit --no-fund npm@11.19.0
+ENV PATH=/opt/build-tools/node_modules/.bin:$PATH
 COPY package.json package-lock.json .npmrc ./
-RUN npm install --global npm@11.19.0 && npm ci --no-audit --no-fund
+RUN npm ci --no-audit --no-fund
 COPY . .
 RUN npm run build
 

@@ -105,4 +105,4 @@ export type Order = z.infer<typeof orderSchema>;
 export type Feedback = z.infer<typeof feedbackSchema>;
 export type Blog = z.infer<typeof blogSchema>;
 export type AuthTokenPayload = z.infer<typeof authTokenPayloadSchema>;
-export type PageResult<T> = { rows: T[]; count?: number };
+export type PageResult<T> = { rows: T[]; count?: number | undefined };

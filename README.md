@@ -1,137 +1,54 @@
-# 🚀 Flatlogic Ecommerce React - A Free E-commerce Template!
+# Flatlogic Ecommerce React
 
-[View Demo](https://flatlogic.com/templates/ecommerce-react-template/demo) | [Download](https://github.com/flatlogic/ecommerce-frontend/archive/refs/heads/master.zip) | [More Templates](https://flatlogic.com/templates) | [Discord Community](https://discord.gg/flatlogic-community) | [Support Forum](https://flatlogic.com/forum)
+A free storefront and admin dashboard for a furniture shop, built with Next.js 16, React 19, TypeScript and Bootstrap 5. Shoppers can browse products, save favorites and add items to their cart. The admin dashboard manages the catalog, orders and blog.
 
-**Originally a premium product priced at $119+, made available for free in January 2025!** 🎉
+[Browse the live shop](https://flatlogic-ecommerce.flatlogic.com/shop) · [Admin dashboard](https://flatlogic-ecommerce.flatlogic.com/admin/dashboard) · [Backend setup](https://github.com/flatlogic/ecommerce-backend#-quick-start) · [Latest release](https://github.com/flatlogic/ecommerce-frontend/releases/latest) · [Changelog](changelog.md)
 
-Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web App Generator](https://flatlogic.com/generator) - our new tool, sort of a template++.
+[![Flatlogic storefront with the home collection and new arrivals](public/images/screenshot.png)](https://flatlogic-ecommerce.flatlogic.com/)
 
----
+The live demo uses a shared catalog. Changes made there can appear to other visitors. Run your own backend for a catalog you control.
 
-## 🎯 Why Flatlogic Ecommerce React?
+## Run locally
 
-- **Ex-Premium**: This template was previously paid. Enjoy it for free now. 😉
-- **Fully Functional Store**: Includes product pages, categories, and user authentication.
-- **Join the Community**: [Flatlogic Discord](https://discord.gg/flatlogic-community) is where the action happens.
-- **Free Node.js Backend**: Pair it up with [ecommerce react backend](https://github.com/flatlogic/ecommerce-backend) to go full-stack.
+Start the [companion Node.js API](https://github.com/flatlogic/ecommerce-backend) with its PostgreSQL database and sample data. The frontend expects the API at `http://localhost:8080/api`.
 
----
+With [nvm](https://github.com/nvm-sh/nvm) installed, run the following in a separate terminal. The repository pins Node in [`.nvmrc`](.nvmrc) and npm in [`package.json`](package.json).
 
-## 🚀 Quick Start
+```sh
+git clone https://github.com/flatlogic/ecommerce-frontend.git
+cd ecommerce-frontend
+nvm install
+npm ci
+cp .env.example .env.local
+npm run dev
+```
 
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/flatlogic/ecommerce-frontend.git
-   cd ecommerce-frontend
-   ```
-2. **Select Node 22 LTS and install dependencies**
-   ```bash
-   nvm use
-   npm ci
-   ```
-3. **Configure the backend**
+Open [the local shop](http://localhost:3000/shop). If the catalog is empty, check that the backend is running, has sample products and is reachable at the API URL in `.env.local`.
 
-   ```bash
-   cp .env.example .env.local
-   ```
+## Configuration
 
-   Set `API_BASE_URL` and `NEXT_PUBLIC_API_BASE_URL` to the ecommerce API.
+The defaults in [`.env.example`](.env.example) work for a frontend and API running on the same computer. For another deployment, set these values before building.
 
-4. **Run the app**
+| Variable | Used for |
+| --- | --- |
+| `API_BASE_URL` | API URL reachable from the Next.js server, including `/api`. |
+| `NEXT_PUBLIC_API_BASE_URL` | API URL reachable from the shopper’s browser, including `/api`. |
+| `NEXT_PUBLIC_APP_URL` | Public storefront URL used for checkout return links. |
 
-   ```bash
-   npm run dev
-   ```
+The billing page demonstrates Stripe Checkout with a sample line item. To take payments for a real cart, configure Stripe on the backend and calculate the order total there.
 
-   Navigate to http://localhost:3000/.
+## Build and test
 
-5. **Build for production**
-   ```bash
-   npm run build
-   npm start
-   ```
+| Command | What it does |
+| --- | --- |
+| `npm run build` | Build the production frontend. |
+| `npm start` | Serve the production build. |
+| `npm run verify` | Type-check, lint, run unit tests with coverage and build. |
+| `npm run test:e2e` | Run desktop and mobile Playwright tests. |
+| `npm run test:visual` | Compare storefront screenshots with the saved baselines. |
 
----
+Before the first browser test, run `npx playwright install chromium webkit`. The visual baselines in this repository were captured on macOS.
 
-## 🧩 Features
+## License and support
 
-- Product Listing & Filtering
-- Server-side Rendering (Next.js)
-- SEO Module
-- Blog & CMS Integration
-- User Authentication (email/password)
-- Stripe Integration
-- Responsive Layout
-- Checkout Page
-
----
-
-## 🛠 Built With
-
-- React 19 and TypeScript 6
-- Next.js 16 App Router
-- Bootstrap 5 and Sass
-- Redux Toolkit
-- Zod-validated Axios API client
-- Vitest, Testing Library, and Playwright
-- PostgreSQL
-- Sequelize ORM
-
-## ✅ Validation
-
-Run `npm run verify` before submitting changes. Individual checks are available through `npm run typecheck`, `npm run lint`, `npm run test:coverage`, `npm run test:e2e`, and `npm run test:visual`.
-
----
-
-## 📦 Pages
-
-- Product Listings
-- Product Page
-- Categories
-- Dashboard
-- Blog (CMS)
-- Checkout
-- Login / Registration
-- Error Page
-
----
-
-## 🌍 Available Variants
-
-|               | **Material**                                                                       | **Transparent**                                                       | **Classic**                                                       | **Sofia**                                               | **Flatlogic**                                                             |
-| ------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------- |
-| **React**     | [React Material Admin](https://github.com/flatlogic/react-material-admin-full)     | [Light Blue React](https://github.com/flatlogic/light-blue-react)     | [Sing App React](https://github.com/flatlogic/sing-app-react)     | [Sofia React](https://github.com/flatlogic/sofia-react) | [One React](https://github.com/flatlogic/one-react)                       |
-| **Angular**   | [Angular Material Admin](https://github.com/flatlogic/angular-material-admin-full) | [Light Blue Angular](https://github.com/flatlogic/light-blue-angular) | [Sing App Angular](https://github.com/flatlogic/sing-app-angular) | -                                                       | -                                                                         |
-| **Vue**       | [Material Vue](https://github.com/flatlogic/material-vue-full)                     | [Light Blue Vue](https://github.com/flatlogic/light-blue-vue)         | [Sing App Vue](https://github.com/flatlogic/sing-app-vue)         | -                                                       | -                                                                         |
-| **Bootstrap** | -                                                                                  | [Light Blue HTML5](https://github.com/flatlogic/light-blue-html5)     | [Sing App HTML5](https://github.com/flatlogic/sing-app-html5)     | -                                                       | [One Bootstrap](https://github.com/flatlogic/one-bootstrap-template-full) |
-
-Additionally, these templates are tailored for specific business needs:
-
-- [E-Commerce Frontend (React)](https://github.com/flatlogic/ecommerce-frontend) - A complete e-commerce solution.
-- [Bookkeeper UI (React)](https://github.com/flatlogic/bookkeeper-ui) - Accounting dashboard for finance management.
-- [User Management Template (React)](https://github.com/flatlogic/user-management-template) - User authentication and management.
-
----
-
-## 👨‍💻 How to Contribute
-
-- **Star this repo ⭐** - show some love.
-- **Report bugs** - but be nice.
-- **Join the [Discord](insert-discord-invite-link)** - meet fellow devs.
-
----
-
-## 🔥 About Flatlogic
-
-[Flatlogic AI Software Engineer](https://flatlogic.com/ai-software-development-agent) builds modern business software so you don't have to. Our AI Software Development Agent helps you generate, deploy, and maintain enterprise applications with minimal effort.
-
----
-
-## 📜 License
-
-This template is free to use. Modify it, break it, make it your own. Just don’t try to sell it back to us. 😎
-
----
-
-> **Questions or feedback?**  
-> Join our [Flatlogic Community Discord](https://discord.gg/flatlogic-community) or visit our [support forum](https://flatlogic.com/forum). We might even reply!
+Released under the [MIT License](LICENSE). [Report a bug](https://github.com/flatlogic/ecommerce-frontend/issues) or ask a question on the [Flatlogic forum](https://flatlogic.com/forum).

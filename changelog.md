@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4] - 26/11/2026
+
+### Documentation
+
+- Added a storefront preview and direct links to the live shop and backend setup.
+- Clarified local API configuration, the sample checkout flow and how to run the browser tests.
+
 ## [2.0.3] - 26/11/2026
 
 ### Fixed

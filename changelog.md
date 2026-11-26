@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.1] - 26/11/2026
+
+### Security
+
+- Updated Next.js from 16.3.6 to 16.4.6 and Zod from 4.6.5 to 4.6.7.
+- Updated Vite to 8.3.8, Vitest and its coverage provider to 5.1.2, and refreshed the npm lockfile to pick up fixes for transitive dependencies.
+
+### Fixed
+
+- Restored the checkout request to the backend's payment endpoint when the storefront API URL ends in `/api`.
+
 ## [2.0.0] - 24/09/2026
 
 This release delivers a complete modernization of the ecommerce frontend while preserving its existing UI, public routes, and API contracts.

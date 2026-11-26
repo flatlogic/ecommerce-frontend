@@ -100,12 +100,6 @@ async function installApiMocks(page: Page, rows: unknown[] = []) {
       });
       return;
     }
-    if (url.pathname.endsWith("/payment/session-initiate")) {
-      await route.fulfill({
-        json: { url: "https://checkout.stripe.com/c/pay/test" },
-      });
-      return;
-    }
     await route.fulfill({
       json: rows.length ? { rows, count: rows.length } : apiRows,
     });
@@ -1445,13 +1439,22 @@ test("forgot password preserves the production form layout", async ({
 test("checkout redirects with the URL returned by the API", async ({
   page,
 }) => {
+  const apiBaseUrl = new URL(
+    process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080/api",
+  );
+  apiBaseUrl.pathname = apiBaseUrl.pathname.replace(/(?:\/api)?\/?$/, "/");
+  const checkoutUrl = new URL("payment/session-initiate", apiBaseUrl).href;
+  await page.route(checkoutUrl, (route) =>
+    route.fulfill({ json: { url: "https://checkout.stripe.com/c/pay/test" } }),
+  );
   await page.route("https://checkout.stripe.com/**", (route) =>
     route.fulfill({ body: "checkout" }),
   );
   await page.goto("/billing");
   await page.waitForLoadState("networkidle");
-  const responsePromise = page.waitForResponse((response) =>
-    response.url().includes("/payment/session-initiate"),
+  const responsePromise = page.waitForResponse(
+    (response) =>
+      response.url() === checkoutUrl && response.request().method() === "POST",
   );
   await page.getByRole("button", { name: "PLACE ORDER" }).click();
   expect((await responsePromise).status()).toBe(200);

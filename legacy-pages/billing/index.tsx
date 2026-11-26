@@ -20,7 +20,9 @@ import MaskInput from "components/compat/MaskInput";
 import { z } from "zod";
 import Head from "components/compat/Head";
 import Checkbox from "components/compat/Checkbox";
+import config from "constants/config";
 
+const checkoutUrl = `${config.baseURLApi.replace(/\/api$/, "")}/payment/session-initiate`;
 const checkoutSessionSchema = z.object({ url: z.string().url() });
 
 const Index = () => {
@@ -41,7 +43,7 @@ const Index = () => {
   const processPayment = async () => {
     try {
       const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? window.location.origin;
-      const session = await axios.post("/payment/session-initiate", {
+      const session = await axios.post(checkoutUrl, {
         customerEmail: "example@gmail.com",
         clientReferenceId: "12",
         lineItem: {

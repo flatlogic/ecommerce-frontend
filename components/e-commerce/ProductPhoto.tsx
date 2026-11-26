@@ -18,7 +18,10 @@ export function useProductPhoto(src: string | undefined, alt: string) {
   };
 }
 
-type ProductPhotoProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "alt" | "onError"> & {
+type ProductPhotoProps = Pick<
+  ImgHTMLAttributes<HTMLImageElement>,
+  "src" | "width" | "height" | "className"
+> & {
   alt: string;
 };
 

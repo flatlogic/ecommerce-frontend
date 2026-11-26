@@ -420,11 +420,11 @@ const Id = ({
                   className={` ${s.modalProduct} d-flex justify-content-between align-items-center`}
                 >
                   <div className={"d-flex align-items-center"}>
-                    <img
-                      src={primaryImage}
+                    <ProductPhoto
+                      src={product.image[0]?.publicUrl}
                       width={100}
                       className={s.modalProductImage}
-                      alt={"img"}
+                      alt={product.title}
                     />
                     <div>
                       <h6 className={"text-muted"}>

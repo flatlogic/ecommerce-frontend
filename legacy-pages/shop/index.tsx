@@ -23,7 +23,14 @@ import arrowRight from "../../public/images/e-commerce/home/arrow-right.svg";
 import rating from "../../public/images/e-commerce/details/stars.svg";
 import productsListActions from "../../redux/actions/products/productsListActions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { pageResultSchema, productSchema, type Product } from "types/domain";
+import {
+  pageResultSchema,
+  productSchema,
+  type PageResult,
+  type Product,
+} from "types/domain";
+
+const productPageSchema = pageResultSchema(productSchema);
 
 let categoriesList: string[] = [],
   brandsList: string[] = [];
@@ -100,9 +107,11 @@ const Index = () => {
     }
   };
   const [width, setWidth] = React.useState(1440);
-  const [products, setProducts] = React.useState<Product[]>([]);
+  const [productPage, setProductPage] = React.useState<PageResult<Product>>({
+    rows: [],
+  });
+  const { rows: products, count } = productPage;
   const [showFilter, setShowFilter] = React.useState(false);
-  const [, setAllProducts] = React.useState<Product[]>([]);
   const [openState, dispatch] = React.useReducer(openReducer, {
     open0: false,
     open1: false,
@@ -120,10 +129,8 @@ const Index = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
     axios.get("/products").then((res) => {
-      const parsed = pageResultSchema(productSchema).safeParse(res.data);
-      if (!parsed.success) return;
-      setAllProducts(parsed.data.rows);
-      setProducts([...parsed.data.rows]);
+      const parsed = productPageSchema.safeParse(res.data);
+      if (parsed.success) setProductPage(parsed.data);
     });
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -212,8 +219,8 @@ const Index = () => {
     axios
       .get(`/products?categories=${categoriesString}&brand=${brandsString}`)
       .then((res) => {
-        const parsed = pageResultSchema(productSchema).safeParse(res.data);
-        if (parsed.success) setProducts([...parsed.data.rows]);
+        const parsed = productPageSchema.safeParse(res.data);
+        if (parsed.success) setProductPage(parsed.data);
       });
   };
 
@@ -582,7 +589,11 @@ const Index = () => {
                   <span className={"fw-bold text-primary"}>
                     {products.length}
                   </span>{" "}
-                  of <span className={"fw-bold text-primary"}>15</span> Products
+                  of{" "}
+                  <span className={"fw-bold text-primary"}>
+                    {count ?? products.length}
+                  </span>{" "}
+                  Products
                 </h6>
                 <div className={"d-flex align-items-center"}>
                   <h6 className={"text-nowrap mr-3 mb-0"}>Sort by:</h6>

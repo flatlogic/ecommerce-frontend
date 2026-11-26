@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2] - 26/11/2026
+
+### Fixed
+
+- Keep products visible in the shop when the catalog API returns null for optional SEO fields.
+- Show the product total returned by the catalog API when browsing or filtering the shop.
+
 ## [2.0.1] - 26/11/2026
 
 ### Security

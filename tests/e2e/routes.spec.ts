@@ -606,6 +606,37 @@ test("shop sidebar preserves its filters and legacy spacing", async ({
   await expect(page.getByText(product.title)).toBeVisible();
 });
 
+test("shop displays products with nullable SEO and the total for each filter", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const chair = {
+    ...product,
+    price: "79.50",
+    rating: null,
+    meta_description: null,
+    keywords: null,
+    meta_author: null,
+    meta_og_title: null,
+    meta_og_url: null,
+    meta_og_image: null,
+    meta_fb_id: null,
+    meta_og_sitename: null,
+    post_twitter: null,
+  };
+  await page.route("**/api/products*", (route) => {
+    const filtered = new URL(route.request().url()).searchParams.has("categories");
+    return route.fulfill({
+      json: filtered ? { rows: [chair] } : { rows: [chair], count: 7 },
+    });
+  });
+  await page.goto("/shop");
+  await expect(page.getByRole("link", { name: chair.title, exact: true })).toBeVisible();
+  await expect(page.getByText("Showing 1 of 7 Products")).toBeVisible();
+  await page.getByText("Bath & Shower", { exact: true }).click();
+  await expect(page.getByText("Showing 1 of 1 Products")).toBeVisible();
+});
+
 test("shop grid and sorting preserve the legacy storefront layout", async ({
   page,
 }) => {

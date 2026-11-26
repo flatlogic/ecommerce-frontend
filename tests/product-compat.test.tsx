@@ -1,6 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import type { ImgHTMLAttributes } from "react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import ImageMagnify from "components/compat/ImageMagnify";
+import { ZoomableProductPhoto } from "components/e-commerce/ZoomableProductPhoto";
 import { Modal } from "components/compat/bootstrap";
 import {
   ButtonBack,
@@ -17,9 +19,16 @@ const { innerZoomSpy, scrollNextSpy, scrollPrevSpy } = vi.hoisted(() => ({
 }));
 
 vi.mock("react-inner-image-zoom", () => ({
-  default: (props: Record<string, unknown>) => {
+  default: (props: {
+    src: string;
+    imgAttributes: ImgHTMLAttributes<HTMLImageElement>;
+  }) => {
     innerZoomSpy(props);
-    return <div data-testid="image-zoom" />;
+    return (
+      <div data-testid="image-zoom">
+        <img {...props.imgAttributes} src={props.src} />
+      </div>
+    );
   },
 }));
 
@@ -62,6 +71,27 @@ describe("product compatibility components", () => {
         zoomType: "hover",
       }),
     );
+  });
+
+  it("removes detail zoom when the product photo fails and restores it for a working photo", () => {
+    const { container, rerender } = render(
+      <ZoomableProductPhoto alt="Chair" src="/uploads/chair.jpg" />,
+    );
+    const detail = within(container);
+    const original = detail.getByRole("img", { name: "Chair" });
+    expect(detail.getByTestId("image-zoom")).toContainElement(original);
+    fireEvent.error(original);
+
+    expect(detail.queryByTestId("image-zoom")).not.toBeInTheDocument();
+    expect(detail.getByRole("img", { name: "Image unavailable for Chair" })).toHaveAttribute(
+      "src",
+      "/images/e-commerce/product-image-unavailable.png",
+    );
+
+    rerender(<ZoomableProductPhoto alt="Lamp" src="/uploads/lamp.jpg" />);
+    const working = detail.getByRole("img", { name: "Lamp" });
+    expect(working).toHaveAttribute("src", "/uploads/lamp.jpg");
+    expect(detail.getByTestId("image-zoom")).toContainElement(working);
   });
 
   it("preserves the legacy slide width and natural aspect ratio", () => {

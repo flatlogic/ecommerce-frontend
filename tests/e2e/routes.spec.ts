@@ -631,10 +631,57 @@ test("shop displays products with nullable SEO and the total for each filter", a
     });
   });
   await page.goto("/shop");
-  await expect(page.getByRole("link", { name: chair.title, exact: true })).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: chair.title, exact: true }).filter({ hasText: chair.title }),
+  ).toBeVisible();
   await expect(page.getByText("Showing 1 of 7 Products")).toBeVisible();
   await page.getByText("Bath & Shower", { exact: true }).click();
   await expect(page.getByText("Showing 1 of 1 Products")).toBeVisible();
+});
+
+test("shop replaces failed uploads and preserves a working product photo", async ({
+  page,
+}) => {
+  const missingPhoto = "/uploads/missing-chair.jpg";
+  const forbiddenPhoto = "/uploads/forbidden-lamp.jpg";
+  const workingPhoto = "/images/e-commerce/home/product1.png";
+  const products = [missingPhoto, forbiddenPhoto, workingPhoto].map(
+    (publicUrl, index) => ({
+      ...product,
+      id: `${product.id.slice(0, -1)}${index + 1}`,
+      title: `Photo fixture ${index + 1}`,
+      image: [{ id: `image-${index}`, publicUrl }],
+    }),
+  );
+
+  await page.route("**/api/products*", (route) =>
+    route.fulfill({ json: { rows: products, count: products.length } }),
+  );
+  await page.route(`**${missingPhoto}`, (route) =>
+    route.fulfill({ status: 404, body: "Not found" }),
+  );
+  await page.route(`**${forbiddenPhoto}`, (route) =>
+    route.fulfill({ status: 403, body: "Forbidden" }),
+  );
+  await page.goto("/shop");
+
+  for (const item of products) {
+    const image = page.locator(`a[href="/products/${item.id}"] img`);
+    await image.scrollIntoViewIfNeeded();
+    const isWorking = item.image[0]?.publicUrl === workingPhoto;
+    await expect(image).toHaveAttribute(
+      "src",
+      isWorking ? workingPhoto : "/images/e-commerce/product-image-unavailable.png",
+    );
+    await expect(image).toHaveAttribute(
+      "alt",
+      isWorking ? item.title : `Image unavailable for ${item.title}`,
+    );
+    await expect(image).toBeVisible();
+    await expect
+      .poll(() => image.evaluate((img) => (img as HTMLImageElement).naturalWidth))
+      .toBeGreaterThan(0);
+  }
 });
 
 test("shop grid and sorting preserve the legacy storefront layout", async ({

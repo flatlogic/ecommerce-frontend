@@ -424,17 +424,12 @@
   width: 100%;
   height: 264px;
   max-height: 264px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+  display: block;
+  object-fit: contain;
   &:hover {
     transform: scale(1.03) translate(-0px, -0px);
   }
-  @media (max-width: 768px) {
-    background-size: cover;
-  }
   @media (max-width: 380px) {
-    background-size: contain;
     background-color: #f6f6f6;
   }
 }

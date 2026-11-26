@@ -1,4 +1,5 @@
 import React from "react";
+import { ProductPhoto } from "components/e-commerce/ProductPhoto";
 import {
   Container,
   Row,
@@ -640,7 +641,7 @@ const Index = () => {
                   >
                     <div className={s.modalWidndow}>
                       <div className={s.image}>
-                        <img
+                        <ProductPhoto
                           src={item.image[0]?.publicUrl}
                           width={"100%"}
                           height={"100%"}
@@ -754,10 +755,9 @@ const Index = () => {
                   <div style={{ position: "relative" }}>
                     <Link href={`/products/${item.id}`}>
                       <a>
-                        <div
-                          style={{
-                            backgroundImage: `url(${item.image[0]?.publicUrl ?? ""})`,
-                          }}
+                        <ProductPhoto
+                          src={item.image[0]?.publicUrl}
+                          alt={item.title}
                           className={s.productImage}
                         />
                       </a>

@@ -1,4 +1,5 @@
 import React from "react";
+import { ProductPhoto } from "components/e-commerce/ProductPhoto";
 import {
   Container,
   Row,
@@ -495,12 +496,12 @@ const Index = ({ categoryId, categoryData }: CategoryPageProps) => {
                       isOpen={Boolean(openState[`open${index}`])}
                       toggle={() => dispatch({ type: `open${index}` })}
                     >
-                      <img src={c.image[0]?.publicUrl} alt={c.title} />
+                      <ProductPhoto src={c.image[0]?.publicUrl} alt={c.title} />
                     </Modal>
                     <div style={{ position: "relative" }}>
                       <Link href={`/products/${c.id}`}>
                         <a>
-                          <img
+                          <ProductPhoto
                             src={c.image[0]?.publicUrl}
                             className={"img-fluid"}
                             alt={c.title}

@@ -1,0 +1,102 @@
+@use "styles/app" as *;
+
+.sectionHeading {
+  font-size: 24.5px;
+  line-height: 29.4px;
+}
+
+.accountPage :global(.text-muted) {
+  color: #555 !important;
+}
+
+.promo1 {
+  background-color: #f5f5f5;
+  height: 200px;
+  background-image: url("../../public/images/e-commerce/account/promo1.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 25px;
+}
+
+.promo2 {
+  background-color: #f5f5f5;
+  height: 200px;
+  background-image: url("../../public/images/e-commerce/clock_1.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 25px;
+  @media (max-width: 768px) {
+    margin-top: 30px;
+  }
+}
+
+.accountTable {
+  --bs-table-color: #29323a;
+
+  border-color: currentColor;
+  color: #29323a;
+  min-width: 500px;
+  vertical-align: baseline;
+
+  > thead,
+  > tbody {
+    border: 0 none currentColor;
+    vertical-align: middle;
+  }
+
+  > thead > tr,
+  > tbody > tr {
+    border-top: 0 none currentColor;
+    border-bottom: 0 none currentColor;
+    vertical-align: middle;
+  }
+
+  > thead > tr > th {
+    border: 0 none currentColor;
+    padding-top: 10.5px;
+    padding-bottom: 10.5px;
+  }
+
+  > tbody > tr > td {
+    border: 0 none currentColor;
+    padding-bottom: 10.5px;
+  }
+}
+
+.productImage {
+  margin-right: 21px;
+}
+
+.paymentIcon {
+  margin-right: 14px;
+}
+
+.profile {
+  background-color: #f5f5f5;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 40px;
+
+  > hr {
+    box-sizing: content-box;
+    color: gray;
+    height: 0;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  .settingsIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+}

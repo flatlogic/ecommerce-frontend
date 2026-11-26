@@ -1,6 +1,14 @@
 # dependencies
 /node_modules
+/coverage
+/playwright-report
+/test-results
+*.tsbuildinfo
 
 # next
 .next/
 .idea/
+.env
+.env.local
+.env.*.local
+.DS_Store

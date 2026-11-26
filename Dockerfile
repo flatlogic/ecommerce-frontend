@@ -1,26 +1,26 @@
-FROM node:16-bullseye AS deps
+FROM node:22.23.5-bookworm-slim AS base
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+ARG NEXT_PUBLIC_API_URL=http://localhost:8080/api
+ARG NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_URL}
+ARG NEXT_PUBLIC_APP_URL=http://localhost:3000
+ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL} \
+    API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL} \
+    NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL} \
+    NEXT_TELEMETRY_DISABLED=1
 
-FROM deps AS build
-WORKDIR /app
+FROM base AS build
+COPY package.json package-lock.json .npmrc ./
+RUN npm install --global npm@11.19.0 && npm ci --no-audit --no-fund
 COPY . .
-ARG NEXT_PUBLIC_API_URL
-ARG NEXT_PUBLIC_APP_URL
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
-RUN yarn build
+RUN npm run build
 
-FROM node:16-bullseye AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/public ./public
-COPY --from=build /app/package.json ./package.json
-COPY --from=build /app/server.js ./server.js
-COPY --from=build /app/next.config.js ./next.config.js
-COPY --from=build /app/yarn.lock ./yarn.lock
-RUN yarn install --frozen-lockfile --production
+FROM base AS runner
+ENV NODE_ENV=production \
+    HOSTNAME=0.0.0.0 \
+    PORT=3000
+COPY --from=build --chown=node:node /app/.next/standalone ./
+COPY --from=build --chown=node:node /app/.next/static ./.next/static
+COPY --from=build --chown=node:node /app/public ./public
+USER node
 EXPOSE 3000
 CMD ["node", "server.js"]

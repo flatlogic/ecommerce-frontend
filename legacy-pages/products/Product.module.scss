@@ -1,0 +1,171 @@
+@use "styles/app" as *;
+
+.quantityBtn {
+  &:first-of-type {
+    margin-right: 1rem;
+  }
+
+  &:last-of-type {
+    margin-left: 1rem;
+  }
+
+  &:hover,
+  &:focus {
+    color: theme-color("primary") !important;
+  }
+}
+
+.productImage {
+  display: block;
+  min-width: 0;
+  width: 100%;
+}
+
+.productImageWithMargin {
+  margin-right: 1rem;
+  width: calc(100% - 1rem);
+}
+
+.quantityGroup {
+  margin-right: 3rem;
+}
+
+.info {
+  height: 180px;
+  @media (max-width: 768px) {
+    height: 100%;
+  }
+  &__item {
+    section {
+      @media (max-width: 768px) {
+        height: 97px !important;
+      }
+    }
+  }
+}
+
+.buttonsWrapper {
+  > :global(.btn),
+  > a {
+    flex: 1 1 0 !important;
+  }
+
+  > :global(.btn):first-child {
+    margin-right: 1.5rem;
+  }
+
+  > a {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  :global(.btn) {
+    @media (max-width: 576px) {
+      padding: 14px;
+    }
+  }
+  @media (max-width: 992px) {
+    margin-top: 25px;
+  }
+}
+
+.reviewImg {
+  width: 132px;
+  height: 132px;
+  margin-right: 3rem;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+
+.modalProductImage,
+.rateLabel,
+.firstNameInput {
+  margin-right: 1.5rem;
+}
+
+.feedbackForm {
+  :global(.form-group) {
+    margin-bottom: 1rem;
+  }
+}
+
+.dMdNone {
+  @media (max-width: 992px) {
+    display: none !important;
+  }
+}
+
+.detailCategory {
+  @media (max-width: 992px) {
+    margin-top: 20px;
+  }
+}
+
+.detailRating {
+  @media (max-width: 992px) {
+    margin: 2px 0 9px 0;
+  }
+}
+
+.leaveFeedbackBtn {
+  transition: color 0.2s 0.3ms;
+  &:hover {
+    color: #232323 !important;
+  }
+}
+
+.modalProduct {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.product {
+  min-width: 180px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &:hover {
+    a {
+      color: theme-color("primary");
+    }
+  }
+  a {
+    color: #232323;
+    text-decoration: none;
+  }
+}
+
+.relatedProducts {
+  > div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.star {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  margin: 2px;
+  float: left;
+  background-color: #dddddd;
+  -webkit-clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+  );
+}
+.star.selected {
+  background-color: #ebbf96;
+}

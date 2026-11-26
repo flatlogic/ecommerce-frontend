@@ -68,3 +68,18 @@
     @content;
   }
 }
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color !important;
+  }
+}
+
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color !important;
+  }
+}

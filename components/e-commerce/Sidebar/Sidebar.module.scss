@@ -1,4 +1,4 @@
-@import "styles/app";
+@use "styles/app" as *;
 
 .root {
   width: 300px;
@@ -215,7 +215,9 @@
   font-size: 20px;
   font-weight: 700;
   padding-left: 32px;
+
   a {
     color: #fff;
+    text-decoration: none;
   }
 }

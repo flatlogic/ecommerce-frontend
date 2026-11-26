@@ -1,7 +1,6 @@
 {
-    "name": "LinksGroup",
-    "version": "1.0.0",
-    "main": "LinksGroup.js",
-    "license": "MIT"
-  }
-  
+  "name": "LinksGroup",
+  "version": "1.0.0",
+  "main": "LinksGroup.tsx",
+  "license": "MIT"
+}

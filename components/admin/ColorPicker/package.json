@@ -2,5 +2,5 @@
   "name": "ColorPicker",
   "version": "0.0.0",
   "private": true,
-  "main": "ColorPicker.js"
+  "main": "ColorPicker.tsx"
 }

@@ -1,21 +1,28 @@
-@import "../../../styles/app";
+@use "../../../styles/app" as *;
+
+.footerContainer {
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
 
 .socialLink {
   color: #ffffff;
-  transition: color .35s ease;
+  transition: color 0.35s ease;
   & > svg {
     margin-right: 12px;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: var(--primary);
   }
 
   &:active {
-    color: #883C26!important;
+    color: #883c26 !important;
   }
 
   &:disabled {
-    color: #9D9D9D!important;
+    color: #9d9d9d !important;
   }
 }
 .linksRow {
@@ -27,26 +34,44 @@
 .socialLinks {
   margin-top: 20px;
 }
+
+.mutedText {
+  color: $text-muted;
+}
+
+.newsletterInput {
+  margin-right: 1rem;
+}
+
 .navigationLink {
   color: $text-muted;
   cursor: pointer;
   & > h6 {
-    transition: color .35s ease;
-    &:hover, &:focus {
+    transition: color 0.35s ease;
+    &:hover,
+    &:focus {
       color: #f4f4f4;
-    }    
+    }
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: #f4f4f4;
   }
 }
 
 .footer {
-  height: 100%;
+  height: auto;
   background-color: $text-color;
   padding-top: 24px;
 
+  a,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+  }
+
   &__hr {
     border-top: 1px solid #434343;
+    opacity: 1;
   }
 }

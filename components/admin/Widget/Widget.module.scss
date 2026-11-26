@@ -1,4 +1,4 @@
-@import "styles/app";
+@use "styles/app" as *;
 
 .title {
   margin-top: 0;
@@ -73,7 +73,9 @@
     padding: $widget-padding-vertical $widget-padding-horizontal;
   }
   > h5 {
-    transition: padding 0.3s, margin-bottom 0.3s linear;
+    transition:
+      padding 0.3s,
+      margin-bottom 0.3s linear;
     transition-delay: 0.2s;
     padding: $widget-padding-vertical $widget-padding-horizontal;
     margin-bottom: 0;
@@ -147,7 +149,8 @@
   padding: $widget-padding-vertical $widget-padding-horizontal;
 
   > footer {
-    margin: calc(#{$spacer} / 2) (-$widget-padding-horizontal) (-$widget-padding-vertical);
+    margin: calc(#{$spacer} / 2) (-$widget-padding-horizontal)
+      (-$widget-padding-vertical);
     padding: 10px 20px;
     border-bottom-left-radius: $widget-border-radius;
     border-bottom-right-radius: $widget-border-radius;
@@ -208,7 +211,7 @@
   position: relative;
   margin-left: 3px;
 }
- div {
+div {
   .widget-image {
     position: relative;
     overflow: hidden;

@@ -1,0 +1,53 @@
+@use "styles/app" as *;
+
+.backgroundImage {
+  background-image: url("../../public/images/e-commerce/login/bg.svg");
+  background-size: cover;
+}
+
+.button {
+  padding: 14px 70px !important;
+  color: $white !important;
+
+  @media (max-width: 1280px) {
+    padding: 14px 37px !important;
+  }
+}
+
+.label {
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  color: #495057;
+}
+
+.link {
+  color: theme-color("primary");
+  font-weight: $font-weight-thin;
+  text-decoration: none;
+
+  &:hover {
+    color: theme-color("primary");
+    text-decoration: none;
+  }
+}
+
+.formGroup {
+  position: relative;
+}
+
+.viewPassword {
+  cursor: pointer;
+  position: absolute;
+  right: 8px;
+  top: 36px;
+}
+
+.footer {
+  margin-top: 180px;
+
+  & > a {
+    margin-right: 15px;
+  }
+}

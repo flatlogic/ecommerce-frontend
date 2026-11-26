@@ -1,3 +1,12 @@
+.container {
+  // Bootstrap 4 stopped growing containers at 1140px. Bootstrap 5 adds an
+  // extra 1320px breakpoint, which changes the storefront layout on wide
+  // screens.
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
 .container-fluid {
   padding-left: 30px;
   padding-right: 30px;
@@ -68,7 +77,9 @@
 .form-control {
   font-family: $font-family-base;
   box-shadow: none;
-  transition: border-color ease-in-out 0.15s, background-color ease-in-out 0.15s;
+  transition:
+    border-color ease-in-out 0.15s,
+    background-color ease-in-out 0.15s;
   padding: 14px 24px;
   height: 40px;
   border: 1px solid #d9d9d9;
@@ -82,10 +93,10 @@
 
   &.no-border {
     border: none;
-    background-color: darken($input-bg, 5%);
+    background-color: #f3f3f3;
 
     &:focus {
-      background-color: darken($input-bg, 7%);
+      background-color: #eeeeee;
     }
   }
 }
@@ -141,11 +152,13 @@ legend {
 }
 
 .badge-white {
-  @include badge-variant($white);
+  color: $dark;
+  background-color: $white;
 }
 
 .badge-default {
-  @include badge-variant($gray-300);
+  color: $dark;
+  background-color: $gray-300;
 }
 
 .badge {
@@ -270,19 +283,20 @@ small {
 }
 .btn.btn-outline-primary {
   position: relative;
-  transition: all .3s ease;
-  &:hover, &:focus {
+  transition: all 0.3s ease;
+  &:hover,
+  &:focus {
     color: $white !important;
 
     &::after {
       width: 100%;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
     }
   }
   &::after {
-    content: '';
+    content: "";
     position: absolute;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     z-index: -1;
     width: 0;
     height: 100%;
@@ -310,7 +324,8 @@ small {
 .btn-outline {
   @include button-variant(transparent, $white);
 
-  @include hover-focus() {
+  &:hover,
+  &:focus {
     background-color: rgba($white, 0.1);
   }
 }
@@ -338,11 +353,11 @@ small {
 }
 
 .btn.btn-outline-primary:focus {
-  color: theme-color("primary")!important;
+  color: theme-color("primary") !important;
 }
 
 .Toastify .Toastify__toast-body {
-  margin-right: 1em!important;
+  margin-right: 1em !important;
 }
 
 .dropdown-menu-right {
@@ -643,7 +658,6 @@ h6,
   opacity: 0.8;
 }
 
-
 // Navs
 // --------------------------------------------------
 
@@ -845,7 +859,8 @@ pre {
 .btn-white {
   @include button-variant($white, $white);
 
-  @include hover-focus() {
+  &:hover,
+  &:focus {
     background-color: rgba($white, 0.9);
   }
 }
@@ -855,7 +870,9 @@ pre {
 .abc-checkbox,
 .abc-radio {
   label:after {
-    font-family: Line Awesome Free, sans-serif !important;
+    font-family:
+      Line Awesome Free,
+      sans-serif !important;
     content: "\f00c" !important;
     font-weight: $font-weight-semi-bold;
   }
@@ -890,7 +907,8 @@ input[type="range"] {
       height: 40px;
       cursor: ew-resize;
       background: #fff;
-      box-shadow: -340px 0 0 320px theme-color("primary"),
+      box-shadow:
+        -340px 0 0 320px theme-color("primary"),
         inset 0 0 0 40px theme-color("primary");
       border-radius: 50%;
       transition: box-shadow 0.2s ease-in-out;
@@ -932,7 +950,8 @@ input::placeholder {
 }
 
 select.form-control {
-  background: url("../public/images/e-commerce/chevron-down.svg") no-repeat right;
+  background: url("../public/images/e-commerce/chevron-down.svg") no-repeat
+    right;
   -webkit-appearance: none;
   background-position: calc(100% - 15px);
   background-color: $white;
@@ -961,13 +980,14 @@ select.form-control {
   }
 }
 
-.carousel-control-prev, .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
   width: 50px;
 }
 .carousel-control-prev {
   .sr-only {
     color: transparent;
-    transition: all .35s ease;
+    transition: all 0.35s ease;
     width: 60px;
     height: 20px;
     top: 50%;
@@ -977,7 +997,8 @@ select.form-control {
     z-index: 1;
     font-weight: bold;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     .sr-only {
       right: -40px;
       color: #ffffff;
@@ -988,7 +1009,7 @@ select.form-control {
 .carousel-control-next {
   .sr-only {
     color: transparent;
-    transition: all .35s ease;
+    transition: all 0.35s ease;
     width: 60px;
     height: 20px;
     top: 50%;
@@ -998,7 +1019,8 @@ select.form-control {
     z-index: 1;
     font-weight: bold;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     .sr-only {
       left: -40px;
       color: #ffffff;
@@ -1034,7 +1056,7 @@ select.form-control {
 }
 
 .input-range__label--max {
-  display: none
+  display: none;
 }
 
 .input-range__label--min {
@@ -1042,7 +1064,7 @@ select.form-control {
 }
 
 .input-range__label--value {
-  top: .8rem;
+  top: 0.8rem;
 }
 
 .input-range__label-container {

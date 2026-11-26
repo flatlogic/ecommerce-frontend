@@ -1,4 +1,4 @@
-@import "styles/app";
+@use "styles/app" as *;
 
 .root {
   width: $sidebar-width-open;
@@ -86,7 +86,9 @@
   width: 100%;
   font-weight: $font-weight-thin;
   text-align: left;
-  transition: width $sidebar-transition-time ease-in-out, padding-left $sidebar-transition-time ease-in-out;
+  transition:
+    width $sidebar-transition-time ease-in-out,
+    padding-left $sidebar-transition-time ease-in-out;
   padding-left: 25px;
   height: 30px;
 

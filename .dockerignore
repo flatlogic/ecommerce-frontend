@@ -4,3 +4,8 @@ node_modules
 npm-debug.log
 yarn-error.log
 .DS_Store
+.env
+.env.*
+coverage
+playwright-report
+test-results

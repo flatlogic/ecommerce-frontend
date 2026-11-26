@@ -1,0 +1,38 @@
+@use "styles/app" as *;
+
+.aboutContainer {
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+.pageTitle {
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.articleTitle {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.mutedText {
+  color: $text-muted;
+}
+
+.divider {
+  opacity: 1;
+}
+
+.borderLine {
+  background-color: theme-color("primary");
+  height: 3px;
+  width: 80px;
+  position: absolute;
+  bottom: -2px;
+}
+
+.aboutImg {
+  flex: 1 1 auto;
+  object-fit: cover;
+}

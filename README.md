@@ -2,11 +2,11 @@
 
 A free storefront and admin dashboard for a furniture shop, built with Next.js 16, React 19, TypeScript and Bootstrap 5. Shoppers can browse products, save favorites and add items to their cart. The admin dashboard manages the catalog, orders and blog.
 
-[Browse the live shop](https://flatlogic-ecommerce.flatlogic.com/shop) · [Admin dashboard](https://flatlogic-ecommerce.flatlogic.com/admin/dashboard) · [Backend setup](https://github.com/flatlogic/ecommerce-backend#-quick-start) · [Latest release](https://github.com/flatlogic/ecommerce-frontend/releases/latest) · [Changelog](changelog.md)
+[Browse the live shop](https://flatlogic-ecommerce.flatlogic.com/shop) · [Demo sign-in](https://flatlogic-ecommerce.flatlogic.com/login) · [Backend setup](https://github.com/flatlogic/ecommerce-backend#-quick-start) · [Latest release](https://github.com/flatlogic/ecommerce-frontend/releases/latest) · [Changelog](changelog.md)
 
 [![Flatlogic storefront with the home collection and new arrivals](public/images/screenshot.png)](https://flatlogic-ecommerce.flatlogic.com/)
 
-The live demo uses a shared catalog. Changes made there can appear to other visitors. Run your own backend for a catalog you control.
+You can browse the shop as a guest. To open the [admin dashboard](https://flatlogic-ecommerce.flatlogic.com/admin/dashboard), sign in first. The demo catalog is shared, so changes can appear to other visitors.
 
 ## Run locally
 

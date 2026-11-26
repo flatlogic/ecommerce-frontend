@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.5] - 26/11/2026
+
+### Documentation
+
+- Link to the demo sign-in page and explain how to open the admin dashboard.
+
 ## [2.0.4] - 26/11/2026
 
 ### Documentation
